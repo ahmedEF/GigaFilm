@@ -1,0 +1,83 @@
+ion-content {
+  // --background: #f1f2f4;
+  // --color: #fff;
+  margin: 20px;
+}
+.movie-details-container {
+  padding: 20px;
+}
+ion-row {
+  text-align: center;
+  align-items: center;
+}
+ion-icon {
+  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+}
+ion-label {
+  color: rgba(65, 70, 75, 1);
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+.movie-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+.movie-image {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  // border-image: fill 0 linear-gredient(#0003, #000);
+}
+.companie-logo {
+  max-width: 62%;
+  max-height: 152px;
+  border-radius: 11%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.movie-meta {
+  padding: 22px;
+}
+
+.movie-meta p {
+  text-align: justify;
+}
+
+.back-button {
+  margin-top: 30px;
+}
+// header section
+.logo {
+  width: 40px;
+}
+ion-toolbar {
+  box-shadow: -3px -7px 10px 0px;
+  --background: rgba(2, 51, 118, 1);
+}
+.arrow {
+  color: #ffffff;
+  width: 30px;
+  height: 25px;
+}
+ion-item {
+  text-align: center;
+  font-weight: 500;
+  color: #ffffff;
+}
+ion-title {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 15px;
+}

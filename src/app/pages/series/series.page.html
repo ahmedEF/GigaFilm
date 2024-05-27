@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="8" class="ion-justify-content-end">
+        <ion-buttons>
+          <ion-button>
+            <img
+              src="assets/icon/logo3.png"
+              style="height: 38px; width: 40px"
+              alt="Logo"
+            />
+            <div>
+              <h1>Film</h1>
+            </div>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list class="serie-grid">
+    <ion-card *ngFor="let serie of series" class="serie-card">
+      <ion-img
+        [src]="imageBaseUrl + '/w500' + serie.poster_path"
+        class="rounded-image"
+      ></ion-img>
+      <ion-row>
+        <ion-col size="12" class="card-title">
+          <h3>{{ serie.original_name }}</h3>
+        </ion-col>
+      </ion-row>
+      <div class="detail">
+        <ion-row class="ion-justify-content-between">
+          <ion-col size="6">
+            <ion-icon name="trending-up-outline" color="success"></ion-icon>
+            <ion-label>{{ serie.vote_count }}</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-icon name="star" color="warning"> </ion-icon>
+            <ion-label>{{ serie.vote_average }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row style="align-items: end">
+          <ion-col offset="4" offset-sm="8" offset-md="4" offset-lg="2">
+            <ion-button
+              class="button button-outline"
+              routerLink="serie-details/{{ serie.id }}"
+            >
+              <ion-icon name="menu-outline"></ion-icon>
+              <ion-label
+                style="
+                  font-family: 'Roboto';
+                  font-size: 12px;
+                  color: rgba(2, 51, 118, 1);
+                "
+                >Details</ion-label
+              >
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+    <ion-row
+      class="ion-justify-content-center"
+      style="padding: 6%"
+      *ngIf="!isLoading"
+    >
+      <ion-col size="12">
+        <ion-title>There is no content to show</ion-title>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon
+          style="height: 30px; width: 30px"
+          name="alert-circle-outline"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-infinite-scroll
+    threshold="25%"
+    position="bottom"
+    (ionInfinite)="loadMore($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <div id="login-container">
+    <div class="logo">
+      <ion-buttons>
+        <ion-button>
+          <img src="assets/icon/logo3.png" alt="Logo" />
+          <div>
+            <h1>Film</h1>
+          </div>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <h1>Welcome</h1>
+    <p>Please enter your credentials.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-input
+        type="email"
+        label="Email"
+        label-placement="stacked"
+        fill="outline"
+        placeholder="Enter your email"
+        formControlName="email"
+        required
+        ><ion-icon
+          slot="start"
+          name="mail-outline"
+          aria-hidden="true"
+        ></ion-icon>
+      </ion-input>
+      <div
+        *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
+        class="error-message"
+      >
+        Email is required.
+      </div>
+
+      <ion-input
+        type="password"
+        [type]="passwordType"
+        label="Password"
+        label-placement="stacked"
+        fill="outline"
+        placeholder="Enter your password"
+        formControlName="password"
+        required
+      >
+        <ion-icon
+          slot="start"
+          style="margin-right: 14px"
+          name="lock-closed-outline"
+          aria-hidden="true"
+        ></ion-icon>
+        <ion-icon
+          slot="end"
+          [name]="getPasswordIcon()"
+          aria-hidden="true"
+          (click)="togglePasswordVisibility()"
+        ></ion-icon>
+      </ion-input>
+      <div
+        *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+        class="error-message"
+      >
+        Password is required.
+      </div>
+
+      <ion-item lines="none">
+        <ion-checkbox slot="start" formControlName="rememberMe"></ion-checkbox>
+        <ion-label>Remember me</ion-label>
+      </ion-item>
+
+      <ion-button class="loginButton" type="submit">Login</ion-button>
+
+      <ion-item lines="none" slot="center">
+        <label>
+          Don't have an account?
+          <a href="/signup" class="signup">Sign up here</a>
+        </label>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

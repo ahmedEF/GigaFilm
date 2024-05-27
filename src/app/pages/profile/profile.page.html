@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="8" class="ion-justify-content-end">
+        <ion-buttons>
+          <ion-button>
+            <img
+              src="assets/icon/logo3.png"
+              style="height: 38px; width: 40px"
+              alt="Logo"
+            />
+            <div>
+              <h1>Film</h1>
+            </div>
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="signup-container">
+    <div class="logo">
+      <ion-buttons>
+        <ion-button>
+          <img src="assets/icon/user.svg" alt="Logo" />
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <h1>Account</h1>
+    <p>{{ profileForm.get('email')?.value }}</p>
+    <form [formGroup]="profileForm">
+      <ion-input
+        type="text"
+        label="Username"
+        label-placement="stacked"
+        fill="outline"
+        formControlName="username"
+        required
+        [disabled]="true"
+      >
+        <ion-icon
+          slot="start"
+          name="person-outline"
+          aria-hidden="true"
+        ></ion-icon
+      ></ion-input>
+      <ion-input
+        type="email"
+        label="Email"
+        label-placement="stacked"
+        fill="outline"
+        formControlName="email"
+        required
+        [disabled]="true"
+        ><ion-icon
+          slot="start"
+          name="mail-outline"
+          aria-hidden="true"
+        ></ion-icon>
+      </ion-input>
+    </form>
+    <ion-button shape="round" (click)="onLogout()">Logout</ion-button>
+  </div>
+</ion-content>

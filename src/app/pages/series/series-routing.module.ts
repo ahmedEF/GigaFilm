@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { SeriesPage } from './series.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SeriesPage,
+  },
+  {
+    path: 'serie-details/:id',
+    loadChildren: () =>
+      import('./serie-details/serie-details.module').then(
+        (m) => m.SerieDetailsPageModule
+      ),
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class SeriesPageRoutingModule {}
